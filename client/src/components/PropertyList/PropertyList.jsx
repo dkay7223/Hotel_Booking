@@ -1,9 +1,31 @@
-import React from 'react'
+import { propertyList } from "./../../constants/dataFetch";
+import { Circles } from "react-loader-spinner";
+import demoData from "../../constants/demoData";
+import "./PropertyList.scss";
 
+// call from  ../../pages/Home.js
 const PropertyList = () => {
-  return (
-    <div>PropertyList</div>
-  )
-}
+  const { data, loading } = propertyList();
 
-export default PropertyList
+  return (
+    <div className="propertyList">
+      {loading ? (
+        <Circles color="#003580" />
+      ) : (
+        demoData?.propertyList.map((item, i) => (
+          <div className="propertyItem" key={i}>
+            <img alt={item.name} src={item.imgLink} className="propertyImg" />
+            <div className="propertyTitle">
+              <h1>{item.name}</h1>
+              <h2>
+                {data[i]?.count || 0} {data[i]?.type || 0}
+              </h2>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default PropertyList;
