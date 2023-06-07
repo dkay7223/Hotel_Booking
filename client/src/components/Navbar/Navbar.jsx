@@ -1,5 +1,5 @@
-import { useAuthContext } from "../../context/AuthContext";
 import { LOGOUT } from "../../constants/actionTypes";
+import { useAuthContext } from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
